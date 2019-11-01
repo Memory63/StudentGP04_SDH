@@ -47,6 +47,7 @@ public class MyRealm extends AuthorizingRealm {
 
     @Override
     protected AuthenticationInfo doGetAuthenticationInfo(AuthenticationToken token) throws AuthenticationException {
+        System.out.println("用户登录");
         String username = (String) token.getPrincipal();
         UserSdh userSdh = userSdhService.queryUserSdhByUsername(username);
         if(userSdh ==null){

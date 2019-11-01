@@ -47,4 +47,9 @@ public class UserSdhServiceImpl implements UserSdhService {
     public UserSdh queryUserSdhByUsername(String username) {
         return userSdhDao.queryUserSdhByUsername(username);
     }
+
+    @Override
+    public void updateStudent(UserRoleVo userRoleVo) {
+        userSdhDao.updateStudent(userRoleVo);
+    }
 }

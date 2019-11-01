@@ -18,6 +18,9 @@
         function showClaz(id) {
             window.location="${pageContext.request.contextPath}/claz/listStudent?clazId="+id;
         }
+        function addClaz() {
+            window.location="${pageContext.request.contextPath}/claz/add";
+        }
     </script>
 </head>
 <body>
@@ -41,7 +44,7 @@
                         <td>${c.id}</td>
                         <td>${c.clazName}</td>
                         <td>
-                            <fmt:formatDate value="${c.crateTime}" type="time" pattern="yyyy-MM-dd" ></fmt:formatDate>
+                            <fmt:formatDate value="${c.createTime}" type="time" pattern="yyyy-MM-dd" ></fmt:formatDate>
                         </td>
 
                         <td>
@@ -52,6 +55,11 @@
                 </c:forEach>
             </c:when>
         </c:choose>
+        <tr>
+            <td colspan="4">
+                <button id="add" onclick="addClaz()">添加班级</button>
+            </td>
+        </tr>
     </table>
 </body>
 </html>

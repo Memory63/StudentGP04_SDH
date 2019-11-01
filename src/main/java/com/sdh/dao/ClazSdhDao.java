@@ -17,4 +17,6 @@ public interface ClazSdhDao {
     List<ClazSdh> queryClazAll();
 
     List<UserSdh> queryStudent(@Param("clazId") Integer clazId);
+
+    void insertClaz(ClazSdh clazSdh);
 }

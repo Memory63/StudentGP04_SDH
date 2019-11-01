@@ -16,4 +16,6 @@ public interface ClazSdhService {
     List<ClazSdh> queryClazAll();
 
     List<UserSdh> queryStudent(Integer clazId);
+
+    void insertClaz(ClazSdh clazSdh);
 }

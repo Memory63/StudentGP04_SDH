@@ -6,6 +6,7 @@ import com.sdh.pojo.UserSdh;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -33,5 +34,12 @@ public class ClazSdhServiceImpl implements com.sdh.service.ClazSdhService {
     @Override
     public List<UserSdh> queryStudent(Integer clazId) {
         return clazSdhDao.queryStudent(clazId);
+    }
+
+    @Override
+    public void insertClaz(ClazSdh clazSdh) {
+        clazSdh.setId(null);
+        clazSdh.setCreateTime(new Date());
+        clazSdhDao.insertClaz(clazSdh);
     }
 }

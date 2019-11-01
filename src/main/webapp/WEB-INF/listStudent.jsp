@@ -14,7 +14,12 @@
     <script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-1.12.4.min.js"></script>
     <script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-ui.min.js"></script>
     <script type="text/javascript">
-
+        function addStudent() {
+            window.location = "${pageContext.request.contextPath}/claz/addStudent";
+        }
+        function updateStudent(id) {
+            window.location = "${pageContext.request.contextPath}/claz/updateStudent?id="+id;
+        }
     </script>
 </head>
 <body>
@@ -39,8 +44,8 @@
                         </td>
                         <td>${s.gender}</td>
                         <td>
-                            <button id="add">增加</button>
-                            <button id="update">修改</button>
+                            <button id="add" onclick="addStudent()">增加</button>
+                            <button id="update" onclick="updateStudent(${s.id})">修改</button>
                         </td>
                     </tr>
                 </c:forEach>

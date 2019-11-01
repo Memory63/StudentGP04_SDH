@@ -10,6 +10,9 @@
         </selectKey>
         insert into user_sdh values(#{id},#{username},#{password},#{salt},#{gender},#{registTime},#{clazId})
     </insert>
+    <update id="updateStudent">
+        update user_sdh set username=#{username},password=#{password},gender=#{gender} where id=#{id}
+    </update>
 
     <select id="queryUserSdhByUsername" resultType="com.sdh.pojo.UserSdh">
         select * from user_sdh where username=#{username}

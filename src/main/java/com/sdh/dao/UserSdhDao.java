@@ -18,4 +18,6 @@ public interface UserSdhDao {
     void insertUser(UserRoleVo userRoleVo);
 
     UserSdh queryUserSdhByUsername(String username);
+
+    void updateStudent(UserRoleVo userRoleVo);
 }

@@ -4,6 +4,10 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.sdh.dao.ClazSdhDao">
 
+    <insert id="insertClaz">
+        insert into claz_sdh values(#{id},#{clazName},#{createTime})
+    </insert>
+
     <select id="queryClazAll" resultType="ClazSdh">
         select * from claz_sdh
     </select>

@@ -19,5 +19,5 @@ import java.util.Date;
 public class ClazSdh {
     private Integer Id;
     private String  clazName;
-    private Date crateTime;
+    private Date createTime;
 }

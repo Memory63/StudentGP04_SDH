@@ -14,4 +14,6 @@ public interface UserSdhService {
     void insertUser(UserRoleVo userRoleVo);
 
     UserSdh queryUserSdhByUsername(String username);
+
+    void updateStudent(UserRoleVo userRoleVo);
 }
