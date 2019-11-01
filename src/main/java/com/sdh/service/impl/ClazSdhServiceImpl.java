@@ -2,6 +2,7 @@ package com.sdh.service.impl;
 
 import com.sdh.dao.ClazSdhDao;
 import com.sdh.pojo.ClazSdh;
+import com.sdh.pojo.UserSdh;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -27,5 +28,10 @@ public class ClazSdhServiceImpl implements com.sdh.service.ClazSdhService {
     @Override
     public List<ClazSdh> queryClazAll() {
         return clazSdhDao.queryClazAll();
+    }
+
+    @Override
+    public List<UserSdh> queryStudent(Integer clazId) {
+        return clazSdhDao.queryStudent(clazId);
     }
 }

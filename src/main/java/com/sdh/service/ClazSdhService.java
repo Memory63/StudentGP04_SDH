@@ -1,6 +1,7 @@
 package com.sdh.service;
 
 import com.sdh.pojo.ClazSdh;
+import com.sdh.pojo.UserSdh;
 
 import java.util.List;
 
@@ -13,4 +14,6 @@ import java.util.List;
  */
 public interface ClazSdhService {
     List<ClazSdh> queryClazAll();
+
+    List<UserSdh> queryStudent(Integer clazId);
 }

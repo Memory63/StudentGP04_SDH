@@ -7,5 +7,8 @@
     <select id="queryClazAll" resultType="ClazSdh">
         select * from claz_sdh
     </select>
+    <select id="queryStudent" resultType="UserSdh">
+        select * from user_sdh where claz_id=#{clazId}
+    </select>
 
 </mapper>

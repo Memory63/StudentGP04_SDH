@@ -11,5 +11,12 @@
     <select id="queryRoleAll" resultType="RoleSdh">
         select * from role_sdh
     </select>
+    <select id="queryAllRoleByUsername" resultType="java.lang.String">
+        select role_sdh.rolename
+        from user_sdh
+        JOIN user_role_sdh ON user_sdh.id = user_role_sdh.user_id
+        JOIN role_sdh on role_sdh.id = user_role_sdh.role_id
+        WHERE user_sdh.username=#{username}
+    </select>
 
 </mapper>

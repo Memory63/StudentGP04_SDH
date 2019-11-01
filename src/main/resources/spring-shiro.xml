@@ -16,7 +16,11 @@
 							http://www.springframework.org/schema/aop/spring-aop.xsd">
 
     <bean id="realm" class="com.sdh.realm.MyRealm">
-<!--        <property name="sysUserService" ref="sysUserServiceImpl"></property>-->
+
+        <property name="userSdhService" ref="userSdhServiceImpl"></property>
+        <property name="permSdhService" ref="permSdhServiceImpl"></property>
+        <property name="roleSdhService" ref="roleSdhServiceImpl"></property>
+
         <property name="credentialsMatcher">
             <bean class="org.apache.shiro.authc.credential.HashedCredentialsMatcher">
                 <property name="hashAlgorithmName" value="SHA-256"></property>

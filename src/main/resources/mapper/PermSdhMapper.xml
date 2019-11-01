@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sdh.dao.PermSdhDao">
+
+    <select id="queryAllPermByUsername" resultType="java.lang.String">
+        select DISTINCT perm_sdh.perm_name
+        from user_sdh
+          JOIN user_role_sdh ON user_sdh.id = user_role_sdh.user_id
+          JOIN role_sdh on role_sdh.id = user_role_sdh.role_id
+          JOIN role_perm_sdh ON role_sdh.id = role_perm_sdh.role_id
+          JOIN perm_sdh ON role_perm_sdh.perm_id = perm_sdh.id
+        WHERE user_sdh.username=#{username}
+    </select>
+
+</mapper>

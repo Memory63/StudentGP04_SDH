@@ -1,5 +1,6 @@
 package com.sdh.dao;
 
+import com.sdh.pojo.UserSdh;
 import com.sdh.vo.UserRoleVo;
 
 /**
@@ -15,4 +16,6 @@ public interface UserSdhDao {
      * @param userRoleVo
      */
     void insertUser(UserRoleVo userRoleVo);
+
+    UserSdh queryUserSdhByUsername(String username);
 }

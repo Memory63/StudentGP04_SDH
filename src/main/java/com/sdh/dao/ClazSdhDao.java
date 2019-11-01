@@ -1,6 +1,8 @@
 package com.sdh.dao;
 
 import com.sdh.pojo.ClazSdh;
+import com.sdh.pojo.UserSdh;
+import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
@@ -13,4 +15,6 @@ import java.util.List;
  */
 public interface ClazSdhDao {
     List<ClazSdh> queryClazAll();
+
+    List<UserSdh> queryStudent(@Param("clazId") Integer clazId);
 }

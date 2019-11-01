@@ -2,6 +2,7 @@ package com.sdh.service.impl;
 
 import com.sdh.dao.RoleSdhDao;
 import com.sdh.dao.UserSdhDao;
+import com.sdh.pojo.UserSdh;
 import com.sdh.service.UserSdhService;
 import com.sdh.vo.UserRoleVo;
 import org.apache.shiro.crypto.hash.Sha256Hash;
@@ -40,5 +41,10 @@ public class UserSdhServiceImpl implements UserSdhService {
         userRoleVo.setId(null);
         userSdhDao.insertUser(userRoleVo);
         roleSdhDao.insertUserRole(userRoleVo.getRoleId(),userRoleVo.getId());
+    }
+
+    @Override
+    public UserSdh queryUserSdhByUsername(String username) {
+        return userSdhDao.queryUserSdhByUsername(username);
     }
 }

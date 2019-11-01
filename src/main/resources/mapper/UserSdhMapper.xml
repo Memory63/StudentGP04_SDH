@@ -11,4 +11,8 @@
         insert into user_sdh values(#{id},#{username},#{password},#{salt},#{gender},#{registTime},#{clazId})
     </insert>
 
+    <select id="queryUserSdhByUsername" resultType="com.sdh.pojo.UserSdh">
+        select * from user_sdh where username=#{username}
+    </select>
+
 </mapper>

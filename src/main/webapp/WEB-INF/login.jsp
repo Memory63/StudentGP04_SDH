@@ -9,9 +9,30 @@
 <html>
 <head>
     <title>Title</title>
+    <script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-1.12.4.min.js"></script>
+    <script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-ui.min.js"></script>
+    <script type="text/javascript">
+        $(function () {
+           $("#captcha").blur(function () {
+               $.ajax({
+                   url:'${pageContext.request.contextPath}/user/captchaCheck',
+                   type:'post',
+                   data:'code='+$("#captcha").val(),
+                   success:function (data) {
+                       if(data.code==1){
+                           $("#submit").removeAttr("disabled");
+                       }else{
+                           $("#submit").attr("disabled",true);
+                           alert("验证码错误")
+                       }
+                   }
+               });
+           })
+        })
+    </script>
 </head>
 <body>
-<form action="${pageContext.request.contextPath}/user/insert" method="post">
+<form action="${pageContext.request.contextPath}/user/login" method="post">
     <table border="1">
         <tr>
             <td>用户名:</td>
@@ -29,12 +50,12 @@
             <td><img src="${pageContext.request.contextPath}/captcha"></td>
             <td>
                 验证码:
-                <input type="text" name="captcha">
+                <input type="text" name="code" id="captcha">
             </td>
         </tr>
         <tr>
             <td colspan="2">
-                <input type="submit" value="登陆">
+                <input type="submit" id="submit" value="登陆" disabled>
                 <input type="reset" value="取消">
             </td>
         </tr>

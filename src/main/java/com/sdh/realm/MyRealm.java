@@ -1,12 +1,21 @@
 package com.sdh.realm;
 
+import com.sdh.pojo.UserSdh;
+import com.sdh.service.PermSdhService;
+import com.sdh.service.RoleSdhService;
+import com.sdh.service.UserSdhService;
 import lombok.Setter;
 import org.apache.shiro.authc.AuthenticationException;
 import org.apache.shiro.authc.AuthenticationInfo;
 import org.apache.shiro.authc.AuthenticationToken;
+import org.apache.shiro.authc.SimpleAuthenticationInfo;
 import org.apache.shiro.authz.AuthorizationInfo;
+import org.apache.shiro.authz.SimpleAuthorizationInfo;
 import org.apache.shiro.realm.AuthorizingRealm;
 import org.apache.shiro.subject.PrincipalCollection;
+import org.apache.shiro.util.ByteSource;
+
+import java.util.Set;
 
 /**
  * @ClassName MyRealm
@@ -18,33 +27,32 @@ import org.apache.shiro.subject.PrincipalCollection;
 @Setter
 public class MyRealm extends AuthorizingRealm {
 
-    /*private SysUserService sysUserService;
-    private SysPermissionService sysPermissionService;
-    private SysRoleService sysRoleService;*/
+    private PermSdhService permSdhService;
+    private RoleSdhService roleSdhService;
+    private UserSdhService userSdhService;
+
 
     @Override
     protected AuthorizationInfo doGetAuthorizationInfo(PrincipalCollection principals) {
-        /*String username = (String) principals.getPrimaryPrincipal();
-        Set<String> permission = sysPermissionService.queryPermissionByUsername(username);
-        Set<String> role = sysRoleService.queryRoleByUsername(username);
+        System.out.println("权限获取");
+        String username = (String) principals.getPrimaryPrincipal();
+        Set<String> permission = permSdhService.queryAllPermByUsername(username);
+        Set<String> role = roleSdhService.queryAllRoleByUsername(username);
+        System.out.println("perm"+permission);
+        System.out.println("role"+role);
         SimpleAuthorizationInfo simpleAuthorizationInfo = new SimpleAuthorizationInfo(role);
         simpleAuthorizationInfo.setStringPermissions(permission);
-        return simpleAuthorizationInfo;*/
-        return null;
+        return simpleAuthorizationInfo;
     }
 
     @Override
     protected AuthenticationInfo doGetAuthenticationInfo(AuthenticationToken token) throws AuthenticationException {
-        /*String username = (String) token.getPrincipal();
-        SysUser sysUser = sysUserService.querySysUserByUsername(username);
-        if (sysUser.getStatus()==0) {
-            throw new LockedAccountException("禁止登陆");
-        }
-        if(sysUser ==null){
+        String username = (String) token.getPrincipal();
+        UserSdh userSdh = userSdhService.queryUserSdhByUsername(username);
+        if(userSdh ==null){
             return null;
         }
         return new SimpleAuthenticationInfo(
-                sysUser.getUsername(), sysUser.getPassword(), ByteSource.Util.bytes("memory"),this.getName());*/
-        return null;
+                userSdh.getUsername(), userSdh.getPassword(), ByteSource.Util.bytes(userSdh.getSalt()),this.getName());
     }
 }

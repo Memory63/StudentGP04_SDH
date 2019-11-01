@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Set;
 
 /**
  * @ClassName RoleSdhServiceImpl
@@ -30,5 +31,10 @@ public class RoleSdhServiceImpl implements RoleSdhService {
     @Override
     public void insertUserRole(Integer roleId, Integer userId) {
         roleSdhDao.insertUserRole(roleId,userId);
+    }
+
+    @Override
+    public Set<String> queryAllRoleByUsername(String username) {
+        return roleSdhDao.queryAllRoleByUsername(username);
     }
 }

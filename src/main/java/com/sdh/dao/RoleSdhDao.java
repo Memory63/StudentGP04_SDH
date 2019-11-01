@@ -4,6 +4,7 @@ import com.sdh.pojo.RoleSdh;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
+import java.util.Set;
 
 /**
  * @ClassName RoleSdh
@@ -17,4 +18,6 @@ public interface RoleSdhDao {
     List<RoleSdh> queryRoleAll();
 
     void insertUserRole(@Param("roleId") Integer roleId,@Param("userId") Integer userId);
+
+    Set<String> queryAllRoleByUsername(@Param("username") String username);
 }

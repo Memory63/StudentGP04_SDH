@@ -1,5 +1,6 @@
 package com.sdh.service;
 
+import com.sdh.pojo.UserSdh;
 import com.sdh.vo.UserRoleVo;
 
 /**
@@ -11,4 +12,6 @@ import com.sdh.vo.UserRoleVo;
  */
 public interface UserSdhService {
     void insertUser(UserRoleVo userRoleVo);
+
+    UserSdh queryUserSdhByUsername(String username);
 }

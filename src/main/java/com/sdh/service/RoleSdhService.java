@@ -3,6 +3,7 @@ package com.sdh.service;
 import com.sdh.pojo.RoleSdh;
 
 import java.util.List;
+import java.util.Set;
 
 /**
  * @ClassName RoleSdhService
@@ -14,4 +15,5 @@ import java.util.List;
 public interface RoleSdhService {
     List<RoleSdh> queryRoleAll();
     void insertUserRole(Integer roleId,Integer userId);
+    Set<String> queryAllRoleByUsername(String username);
 }
